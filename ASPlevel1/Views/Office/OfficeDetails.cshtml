@@ -11,6 +11,9 @@
     <title>OfficeDetails</title>
 </head>
 <body>
+    @Html.ActionLink("Home", "Index", "Home")
+    @Html.ActionLink("Offices", "Offices", "Office")
+
     <table class="table table-bordered">
         <tr>
             <td>Id</td>
@@ -21,9 +24,9 @@
             <td>@Model.Name</td>
         </tr>
         <tr>
-            <td>FirstName</td>
+            <td>Address</td>
             <td>@Model.Address</td>
-        </tr>       
+        </tr>
     </table>
 </body>
 </html>

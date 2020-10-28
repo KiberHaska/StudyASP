@@ -11,12 +11,13 @@
     <title>Offices</title>
 </head>
 <body>
+    @Html.ActionLink("Home", "Index", "Home")
     <table class="table">
         @foreach (var item in Model)
         {
             <tr>
                 <td>@item.Name</td>
-                <td>@item.Address</td>               
+                <td>@item.Address</td>
                 <td>@Html.ActionLink("Details", "OfficeDetails", "Office", new { id = item.Id })</td>
             </tr>
         }
