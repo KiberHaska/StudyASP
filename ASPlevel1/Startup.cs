@@ -21,6 +21,7 @@ namespace ASPlevel1
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -37,6 +38,10 @@ namespace ASPlevel1
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync(hello);
