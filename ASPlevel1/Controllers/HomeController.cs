@@ -39,5 +39,14 @@ namespace ASPlevel1.Controllers
         {           
             return View(_employees);
         }
+
+        public IActionResult EmployeeDetails(int id)
+        {
+            var employee = _employees.FirstOrDefault(x => x.Id == id);
+            if (employee == null)
+                return NotFound(); //return 404 Not Found
+
+            return View(employee);
+        }
     }
 }

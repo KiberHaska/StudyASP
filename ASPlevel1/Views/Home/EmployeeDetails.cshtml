@@ -1,0 +1,42 @@
+﻿@model ASPlevel1.ViewModels.EmployeeViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EmployeeDetails</title>
+</head>
+<body>
+    <table class="table table-bordered">
+        <tr>
+            <td>Id</td>
+            <td>@Model.Id</td>
+        </tr>
+        <tr>
+            <td>SurName</td>
+            <td>@Model.SurName</td>
+        </tr>
+        <tr>
+            <td>FirstName</td>
+            <td>@Model.FirstName</td>
+        </tr>
+        <tr>
+            <td>Patronymic</td>
+            <td>@Model.Patronymic</td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>@Model.Age</td>
+        </tr>
+        <tr>
+            <td>Position</td>
+            <td>@Model.Position</td>
+        </tr>
+    </table>
+</body>
+</html>
