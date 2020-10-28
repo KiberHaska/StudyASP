@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ASPlevel1.ViewModels.OfficeViewModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Offices</title>
+</head>
+<body>
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Address</td>               
+                <td>@Html.ActionLink("Details", "OfficeDetails", "Office", new { id = item.Id })</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
