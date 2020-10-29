@@ -30,6 +30,7 @@ namespace ASPlevel1
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseStaticFiles();
 
             //var hello = _configuration["CustomHelloWorld"];
             //var logLevel = _configuration["Logging:LogLevel:Default"];
