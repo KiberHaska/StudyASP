@@ -12,6 +12,10 @@ namespace ASPlevel1.Controllers
         public IActionResult Index()
         {            
             return View();
-        }       
+        }
+        public IActionResult Blog()
+        {
+            return View();
+        }
     }
 }
