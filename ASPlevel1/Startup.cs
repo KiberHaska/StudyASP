@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using ASPlevel1.Infrastructure;
+using ASPlevel1.Infrastructure.Interfaces;
+using ASPlevel1.Infrastructure.Services;
 
 namespace ASPlevel1
 {
@@ -26,8 +28,9 @@ namespace ASPlevel1
             services.AddMvc(options =>
             {
                 options.Filters.Add(typeof(SimpleActionFilter));
-                //options.Filters.Add(new SimpleActionFilter());
+                //options.Filters.Add(new SimpleActionFilter());                         
             });
+            services.AddSingleton<IEmployeesService, InMemoryEmployeesService>();
         }
        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

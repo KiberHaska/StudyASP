@@ -1,9 +1,5 @@
 ﻿@model ASPlevel1.ViewModels.EmployeeViewModel
 
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
 
 <html>
@@ -12,8 +8,8 @@
     <title>EmployeeDetails</title>
 </head>
 <body>
-    @Html.ActionLink("Home", "Index", "Home")
-    @Html.ActionLink("Employees", "Employees", "Employee")
+    
+    @Html.ActionLink("Back to list", "Employees", "Employee")
     
     <table class="table table-bordered">
         <tr>

@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ASPlevel1.Controllers
 {
-    [SimpleActionFilter]
     public class HomeController : Controller
     {           
         public IActionResult Index()
