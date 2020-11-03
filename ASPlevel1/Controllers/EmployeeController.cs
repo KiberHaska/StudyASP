@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ASPlevel1.Controllers
 {
+    [Route("users/[action]")]
+    //[Route("users")]
     public class EmployeeController : Controller
     {
         private readonly List<EmployeeViewModel> _employees = new List<EmployeeViewModel>
@@ -30,12 +32,14 @@ namespace ASPlevel1.Controllers
                 Position = "Programmer"
             }
             };
-       
+
+        //[Route("list")]
         public IActionResult Employees()
-        {           
+        {
             return View(_employees);
         }
 
+        //[Route("{id}")]
         public IActionResult EmployeeDetails(int id)
         {
             var employee = _employees.FirstOrDefault(x => x.Id == id);
