@@ -23,6 +23,11 @@ namespace ASPlevel1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(typeof(SimpleActionFilter));
+                //options.Filters.Add(new SimpleActionFilter());
+            });
         }
        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
