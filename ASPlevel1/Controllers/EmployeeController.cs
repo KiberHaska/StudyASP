@@ -71,7 +71,13 @@ namespace ASPlevel1.Controllers
             }
             _employeesService.Commit();
             return RedirectToAction(nameof(Employees));
-        }           
-
+        }
+      
+        [Route("/delete/{id?}")]
+        public IActionResult Delete(int id)
+        {
+            _employeesService.Delete(id);
+            return RedirectToAction(nameof(Employees));
+        }        
     }
 }

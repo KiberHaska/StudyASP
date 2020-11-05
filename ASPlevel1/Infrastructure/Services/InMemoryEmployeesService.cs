@@ -32,7 +32,7 @@ namespace ASPlevel1.Infrastructure.Services
         };
         public void AddNew(EmployeeViewModel model)
         {
-            model.Id = _employees.Max(e => e.Id) + 1;
+            model.Id = (_employees.Count > 0) ? _employees.Max(e => e.Id) + 1 : 1;
             _employees.Add(model);
         }
         public void Commit()
