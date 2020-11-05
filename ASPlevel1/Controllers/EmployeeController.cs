@@ -48,6 +48,7 @@ namespace ASPlevel1.Controllers
 
             return View(model);
         }
+
         [HttpPost]
         [Route("/edit/{id?}")]
         public IActionResult Edit(EmployeeViewModel model)
@@ -70,7 +71,7 @@ namespace ASPlevel1.Controllers
             }
             _employeesService.Commit();
             return RedirectToAction(nameof(Employees));
-        }
+        }           
 
     }
 }

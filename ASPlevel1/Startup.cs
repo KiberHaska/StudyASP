@@ -30,7 +30,10 @@ namespace ASPlevel1
                 options.Filters.Add(typeof(SimpleActionFilter));
                 //options.Filters.Add(new SimpleActionFilter());                         
             });
+
             services.AddSingleton<IEmployeesService, InMemoryEmployeesService>();
+            //services.AddTransient<IEmployeesService, InMemoryEmployeesService>();
+            //services.AddScoped<IEmployeesService, InMemoryEmployeesService>();
         }
        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
