@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASPlevel1.Infrastructure.Interfaces;
 using ASPlevel1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,40 +10,56 @@ namespace ASPlevel1.Controllers
 {
     public class OfficeController : Controller
     {
-        private readonly List<OfficeViewModel> _employees = new List<OfficeViewModel>
+        private readonly IOfficesService _officesService;
+        public OfficeController(IOfficesService officesService)
         {
-            new OfficeViewModel
-            {
-                Id = 1,
-                Name = "Office1",
-                Address = "1 Street"                
-            },
-            new OfficeViewModel
-            {
-                Id = 2,
-                Name = "Office2",
-                Address = "2 Street"                
-            },
-            new OfficeViewModel
-            {
-                Id = 3,
-                Name = "Office3",
-                Address = "3 Street"
-            }
-            };
-        
+            _officesService = officesService;
+        }
+
         public IActionResult Offices()
         {           
-            return View(_employees);
+            return View(_officesService.GetAll());
         }
 
         public IActionResult OfficeDetails(int id)
         {
-            var office = _employees.FirstOrDefault(x => x.Id == id);
+            var office = _officesService.GetById(id);
             if (office == null)
                 return NotFound(); //return 404 Not Found
 
             return View(office);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var model = _officesService.GetById(id);
+
+            if (model == null)
+                return NotFound(); //404
+
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult Edit(OfficeViewModel model)
+        {
+            if (model.Id > 0)
+            {
+                var dbItem = _officesService.GetById(model.Id);
+                if (ReferenceEquals(dbItem, null))
+                    return NotFound();
+
+                dbItem.Name = model.Name;
+                dbItem.Address = model.Address;               
+            }
+
+            return RedirectToAction(nameof(Offices));
+        }
+
+        public IActionResult Delete(int id)
+        {
+            _officesService.Delete(id);
+            return RedirectToAction(nameof(Offices));
         }
     }
 }

@@ -32,6 +32,7 @@ namespace ASPlevel1
             });
 
             services.AddSingleton<IEmployeesService, InMemoryEmployeesService>();
+            services.AddSingleton<IOfficesService, InMemoryOfficesService>();
             //services.AddTransient<IEmployeesService, InMemoryEmployeesService>();
             //services.AddScoped<IEmployeesService, InMemoryEmployeesService>();
         }
