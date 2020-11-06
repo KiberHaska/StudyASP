@@ -38,14 +38,7 @@ namespace ASPlevel1.Controllers
         {
             return View();
         }
-        public IActionResult ProductDetails()
-        {
-            return View();
-        }
-        public IActionResult Shop()
-        {
-            return View();
-        }
+       
         public IActionResult Error()
         {
             return View();
