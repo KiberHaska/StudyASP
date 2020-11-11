@@ -1,4 +1,8 @@
-﻿
+﻿@model ASPlevel1.ViewModels.CatalogViewModel
+@{
+    ViewData["Title"] = "Shop";
+}
+
 <section id="advertisement">
     <div class="container">
         <img src="~/images/shop/advertisement.jpg" alt="" />
@@ -13,7 +17,7 @@
             </div>
 
             <div class="col-sm-9 padding-right">
-                @await Html.PartialAsync("Partial/_FeaturesItems")
+                @await Html.PartialAsync("Partial/_ProductItems", Model.Products)
             </div>
         </div>
     </div>
