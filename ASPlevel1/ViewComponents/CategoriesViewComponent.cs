@@ -17,8 +17,6 @@ namespace ASPlevel1.ViewComponents
             this._productService = productService;
         }
 
-       
-
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var Categories = GetCategories();

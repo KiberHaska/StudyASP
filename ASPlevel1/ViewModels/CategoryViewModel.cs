@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ASPlevel1.ViewModels
 {
-    public class CategoryViewModel: NamedEntity, IOrderedEntity
+    public class CategoryViewModel: INamedEntity, IOrderedEntity
     {
         public CategoryViewModel()
         {
