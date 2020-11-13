@@ -7,6 +7,7 @@ namespace AspLevel1.Domain.Entities.Base.Interfaces
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         int Id { get; set; }
         string Name { get; set; }
     }
