@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using ASPlevel1.Infrastructure;
 using ASPlevel1.Infrastructure.Interfaces;
 using ASPlevel1.Infrastructure.Services;
+using ASPlevel1.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace ASPlevel1
 {
@@ -36,6 +38,9 @@ namespace ASPlevel1
             services.AddSingleton<IProductService, InMemoryProductService>();
             //services.AddTransient<IEmployeesService, InMemoryEmployeesService>();
             //services.AddScoped<IEmployeesService, InMemoryEmployeesService>();
+
+            services.AddDbContext<ASPlevel1Context>(options => options
+                .UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
         }
        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
