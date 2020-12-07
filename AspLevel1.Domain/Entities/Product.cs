@@ -21,5 +21,12 @@ namespace AspLevel1.Domain.Entities
 
         [ForeignKey("BrandId")]
         public virtual Brand Brand { get; set; }
+
+        //equally:
+        //public int Order { get; set; }        
+        //public string ImageUrl { get; set; }
+        //public decimal Price { get; set; }
+        //public virtual Category Category { get; set; }
+        //public virtual Brand Brand { get; set; }
     }
 }
