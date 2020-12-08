@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using AspLevel1.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ASPlevel1.DAL
 {
-    public class ASPlevel1Context : DbContext
+    public class ASPlevel1Context : IdentityDbContext<User>
     {
         public ASPlevel1Context(DbContextOptions options) : base(options)
         {

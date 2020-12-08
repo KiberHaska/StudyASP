@@ -23,7 +23,7 @@ namespace ASPlevel1.DAL
                 new Category()
                 {
                     Id = 1,
-                    Name = "Sportswear 2",
+                    Name = "Sportswear",
                     Order = 0,
                     ParentId = null
                 },

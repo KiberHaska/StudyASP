@@ -13,6 +13,8 @@ using ASPlevel1.Infrastructure.Interfaces;
 using ASPlevel1.Infrastructure.Services;
 using ASPlevel1.DAL;
 using Microsoft.EntityFrameworkCore;
+using AspLevel1.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace ASPlevel1
 {
@@ -36,21 +38,58 @@ namespace ASPlevel1
             services.AddScoped<IProductService, SqlProductService>();
             services.AddSingleton<IEmployeesService, InMemoryEmployeesService>();
             services.AddSingleton<IOfficesService, InMemoryOfficesService>();
-            //services.AddSingleton<IProductService, InMemoryProductService>();
-            //services.AddTransient<IEmployeesService, InMemoryEmployeesService>();
-            //services.AddScoped<IEmployeesService, InMemoryEmployeesService>();
+            //AddSingleton, AddTransient, AddScoped;
 
             services.AddDbContext<ASPlevel1Context>(options => options
                 .UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<ASPlevel1Context>()
+                .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(options => // необязательно
+            {
+                // Password settings
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 5;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+
+                // Lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+                options.Lockout.AllowedForNewUsers = true;
+
+                // User settings
+                options.User.RequireUniqueEmail = true;
+            });
+
+            services.ConfigureApplicationCookie(options => // необязательно
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                //options.Cookie.Expiration = TimeSpan.FromDays(150);
+                options.LoginPath = "/Account/Login"; // If the LoginPath is not set here, ASP.NET Core will default to /Account/Login
+                options.LogoutPath = "/Account/Logout"; // If the LogoutPath is not set here, ASP.NET Core will default to /Account/Logout
+                options.AccessDeniedPath = "/Account/AccessDenied"; // If the AccessDeniedPath is not set here, ASP.NET Core will default to /Account/AccessDenied
+                options.SlidingExpiration = true;
+            });
         }
        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+                     
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             //var hello = _configuration["CustomHelloWorld"];
             //var logLevel = _configuration["Logging:LogLevel:Default"];
