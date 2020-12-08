@@ -33,9 +33,10 @@ namespace ASPlevel1
                 //options.Filters.Add(new SimpleActionFilter());                         
             });
 
+            services.AddScoped<IProductService, SqlProductService>();
             services.AddSingleton<IEmployeesService, InMemoryEmployeesService>();
             services.AddSingleton<IOfficesService, InMemoryOfficesService>();
-            services.AddSingleton<IProductService, InMemoryProductService>();
+            //services.AddSingleton<IProductService, InMemoryProductService>();
             //services.AddTransient<IEmployeesService, InMemoryEmployeesService>();
             //services.AddScoped<IEmployeesService, InMemoryEmployeesService>();
 
