@@ -79,7 +79,7 @@ namespace ASPlevel1.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpGet]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
