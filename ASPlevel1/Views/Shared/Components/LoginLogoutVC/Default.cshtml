@@ -1,8 +1,8 @@
-﻿@if (User.Identity.IsAuthenticated)
+﻿
+@if (User.Identity.IsAuthenticated)
 {
-    <span>Здравствуйте, @User.Identity.Name</span>
-    <a asp-action="Logout" asp-controller="Account" class="btn btn-default">Exit</a>
-    //разлогиниться
+    <li><a asp-controller="Home" asp-action="Checkout"><i class="fa fa-user"></i>Здравствуйте, @User.Identity.Name</a></li>    
+    <a asp-action="Logout" asp-controller="Account" class="btn btn-default">Exit</a>   
 }
 else
 {
