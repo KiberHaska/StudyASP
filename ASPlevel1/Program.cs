@@ -25,6 +25,8 @@ namespace ASPlevel1
                 {
                     ASPlevel1Context context = services.GetRequiredService<ASPlevel1Context>();
                     DbInitializer.Initialize(context);
+                    DbInitializer.InitializeUsers(services);
+                    
                 }
                 catch (Exception ex)
                 {

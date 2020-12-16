@@ -88,8 +88,10 @@ namespace ASPlevel1
             }
                      
             app.UseStaticFiles();
+            app.UseRouting();
 
             app.UseAuthentication();
+            app.UseAuthorization();
 
             //var hello = _configuration["CustomHelloWorld"];
             //var logLevel = _configuration["Logging:LogLevel:Default"];
@@ -99,7 +101,6 @@ namespace ASPlevel1
 
             app.UseMiddleware<TokenMiddleware>();           
 
-            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
