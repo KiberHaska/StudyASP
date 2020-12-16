@@ -1,6 +1,7 @@
 ﻿using AspLevel1.Domain.Entities;
 using ASPlevel1.DAL;
 using ASPlevel1.Infrastructure.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,15 @@ namespace ASPlevel1.Infrastructure.Services
             if (filter.CategoryId.HasValue)
                 contextProducts = contextProducts.Where(c => c.CategoryId.Equals(filter.CategoryId.Value));
             return contextProducts.ToList();
+        }
+
+        public Product GetProductById(int id)
+        {
+            return _context
+                .Products
+                .Include(p => p.Category)
+                .Include(p => p.Brand)
+                .FirstOrDefault(x => x.Id == id);
         }
     }
 }
