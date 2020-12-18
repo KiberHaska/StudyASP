@@ -28,7 +28,11 @@ namespace ASPlevel1.Infrastructure.Services
 
         public IEnumerable<Product> GetProducts(ProductFilter filter)
         {
-            var contextProducts = _context.Products.AsQueryable();
+            var contextProducts = _context
+                .Products
+                .Include(p => p.Category)
+                .Include(p => p.Brand)
+                .AsQueryable();
             if (filter.BrandId.HasValue)
                 contextProducts.Where(c => c.BrandId.HasValue && c.BrandId.Value.Equals(filter.BrandId.Value));
             if (filter.CategoryId.HasValue)

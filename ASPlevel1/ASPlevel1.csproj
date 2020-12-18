@@ -20,10 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ASPlevel1.DAL\ASPlevel1.DAL.csproj" />
     <ProjectReference Include="..\AspLevel1.Domain\AspLevel1.Domain.csproj" />
   </ItemGroup>
