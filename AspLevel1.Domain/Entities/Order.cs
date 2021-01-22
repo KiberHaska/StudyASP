@@ -14,7 +14,5 @@ namespace AspLevel1.Domain.Entities
 
         public virtual User User { get; set; } // внешний ключ в БД
         public virtual Collection<OrderItem> OrderItems { get; set; }
-    }
-    {
-    }
+    }    
 }
