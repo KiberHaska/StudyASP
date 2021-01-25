@@ -36,6 +36,7 @@ namespace ASPlevel1
             });
 
             services.AddScoped<IProductService, SqlProductService>();
+            services.AddScoped<IOrdersService, SqlOrdersService>();
             services.AddSingleton<IEmployeesService, InMemoryEmployeesService>();
             services.AddSingleton<IOfficesService, InMemoryOfficesService>();
             //AddSingleton, AddTransient, AddScoped;
