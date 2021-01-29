@@ -1,8 +1,16 @@
 ﻿
 @if (User.Identity.IsAuthenticated)
 {
-    <li><a asp-controller="Home" asp-action="Checkout"><i class="fa fa-user"></i>Здравствуйте, @User.Identity.Name</a></li>    
-    <a asp-action="Logout" asp-controller="Account" class="btn btn-default">Exit</a>   
+    <span>
+        Здравствуйте,
+        <a asp-action="Index" asp-controller="Profile">@User.Identity.Name</a>
+    </span>
+    <form method="post" asp-controller="Account" asp-action="Logout" asp-antiforgery="true">
+        <input type="submit" value="Выход" class="btn btn-default" />
+    </form>
+
+    @*<li><a asp-controller="Home" asp-action="Checkout"><i class="fa fa-user"></i>Здравствуйте, @User.Identity.Name</a></li>
+    <a asp-action="Logout" asp-controller="Account" class="btn btn-default">Exit</a>*@
 }
 else
 {
